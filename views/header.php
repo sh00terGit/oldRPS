@@ -100,7 +100,7 @@
         </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav" id="menu">
-                        <li class="active" ><a href="/index">Главная</a></li>
+                        <li class="active" ><a href="/index">Главная v1</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Деятельность <b class="caret"></b></a>
                             <ul class="dropdown-menu">
