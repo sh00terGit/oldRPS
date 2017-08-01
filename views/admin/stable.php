@@ -15,7 +15,7 @@
 
 
 <div class="clearfix"></div>
-<div class="container">
+<div class="container" id="admin_content">
     <div class="row">        
         <a type="button"  class="btn btn-success"   onclick="viewAddForm()" ><span class="glyphicon glyphicon-plus " style="color:green;"></span> Добавить</a>
         <p></p> 
@@ -99,7 +99,6 @@
 <script src="/public/js/jquery.jgrowl.min.js"></script>
 <link href="/public/css/jquery-ui.css" rel="stylesheet">
 
-
 <style>
     .input-file {
         display: block;
@@ -152,4 +151,6 @@
     }
 
 </style>
+
+
 

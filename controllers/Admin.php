@@ -23,10 +23,10 @@ class Admin extends Controller {
      */
     public function index() {      
         $this->view->currYear = date("Y");
-//        if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') != true) ) {
+        // from bootstrap
         if (($_SESSION['browser']['name'] == 'MSIE') and ((int)$_SESSION['browser']['version'] <= 9)) {  
             $template = 'admin/ie';  // template for ie 7-9:(
-            $ie = true;
+            $ie = true;   
         } else {    
             $template = 'admin/stable';  //template for normal browser
             $ie = false;
