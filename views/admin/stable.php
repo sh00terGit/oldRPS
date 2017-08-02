@@ -15,6 +15,7 @@
 
 
 <div class="clearfix"></div>
+
 <div class="container" id="admin_content">
     <div class="row">        
         <a type="button"  class="btn btn-success"   onclick="viewAddForm()" ><span class="glyphicon glyphicon-plus " style="color:green;"></span> Добавить</a>
@@ -100,6 +101,12 @@
 <link href="/public/css/jquery-ui.css" rel="stylesheet">
 
 <style>
+    
+   .form-group input,.form-group textarea {
+       background-color: #f9f9f9;
+    }
+    
+    
     .input-file {
         display: block;
         cursor: pointer;

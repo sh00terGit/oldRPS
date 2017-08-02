@@ -17,11 +17,21 @@ class Admin extends Controller {
         }
     }
 
+    
     /**
-     * index page render content
+     * index page admin kit , default load editNews
+     * 
+     */
+    public function index() {
+        $this->view->render('admin/index');
+    }
+
+    
+    /**
+     * editNews page render content
      * @return view 
      */
-    public function index() {      
+    public function editNews() {      
         $this->view->currYear = date("Y");
         // from bootstrap
         if (($_SESSION['browser']['name'] == 'MSIE') and ((int)$_SESSION['browser']['version'] <= 9)) {  
@@ -33,13 +43,13 @@ class Admin extends Controller {
         }       
         $changeYear = new YearChange($year = date("Y") ,$page = 1 ,$template, $this->view ,$countPerPage = 30, $countYears = LIMIT_VALUE); 
         $changeYear->script($handler = '/admin/yearchange' , $ie);
-        $changeYear->show($fullpage = true, $script = $changeYear->script);
+        $changeYear->show($fullpage = false, $script = $changeYear->script);
     }
 
     
 
     /**
-     * Service method used Ajax via XMLHttpRequest
+     * Service method used Ajax via XMLHttpRequest for editNews
      * @param  $_GET['year'] year
      * return not full render page
      */
@@ -166,8 +176,8 @@ class Admin extends Controller {
                 }
             }
         }
-        if (isset($_SERVER['HTTP_USER_AGENT']) &&
-                (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== false)) {
+       if (($_SESSION['browser']['name'] == 'MSIE') and ((int)$_SESSION['browser']['version'] <= 9)) {  
+        
 
             header('HTTP/1.1 200 OK');
             header('Location: /admin/');
@@ -175,7 +185,7 @@ class Admin extends Controller {
             $mapper = new NewsMapper();
             $news = $mapper->fetchByPageYear(1, date('Y', strtotime($date)), 30);
             $this->view->news = $news;
-            $this->view->render('admin/stableAjax', $false);
+            $this->view->render('admin/stableAjax', false);
         }
     }
 
