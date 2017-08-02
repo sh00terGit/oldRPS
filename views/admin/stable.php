@@ -94,7 +94,6 @@
     Удалено
 </div>
 <script src="/public/js/stable.js"></script>
-<script src="/public/js/jquery-ui.datepicker.js"></script>
 <script src="/public/js/datepicker.options.js"></script>
 <script src="/public/js/jquery.blockUI.min.js"></script>
 <script src="/public/js/jquery.jgrowl.min.js"></script>

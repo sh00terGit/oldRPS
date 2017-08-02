@@ -13,9 +13,8 @@ $(document).ready(function () {
             'Июль', 'Август', 'Сентябрьr', 'Октябрь', 'Ноябрь', 'Декабрь'],
         dateFormat: "yy-mm-dd"
 
-});
-//    $('input[type="submit"]').prop('disabled', true);   // submit недоступен
-  $("#submitButton").prop('disabled', true);
+});  
+  $("#submitButton").prop('disabled', true);   // submit недоступен
   $("#photo").prop('disabled', true);
   
   
@@ -23,7 +22,7 @@ $(document).ready(function () {
     
     //изначально выбрана дата    
     
-    if ($("#date").datepicker('getDate') != null ) {
+    if ($("#date").datepicker('getDate') != null ) {        
 //        $('input[type="submit"]').prop('disabled', false);
         $("#submitButton").prop('disabled', false);
         $("#photo").prop('disabled', false);
