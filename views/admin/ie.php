@@ -93,7 +93,6 @@
 </div>
 
 <script src="/public/js/ie.js"></script>
-<script src="/public/js/jquery-ui.datepicker.js"></script>
 <script src="/public/js/datepicker.options.js"></script>
 <link href="/public/css/jquery-ui.css" rel="stylesheet">
 
