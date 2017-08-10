@@ -19,7 +19,7 @@ Class NewsMapper extends Mapper {
      * @return array news objects
      */
     public function fetchByPageYear($page,$year ,$countPerPage =  LIMIT_VALUE ) {
-        $query = "SELECT id,title,text,date,img_id FROM news WHERE year(date) =  '$year'  ORDER BY date DESC LIMIT " . $countPerPage . " OFFSET " . $countPerPage * ($page - 1);
+        $query = "SELECT id,title,text,date FROM news WHERE year(date) =  '$year'  ORDER BY date DESC LIMIT " . $countPerPage . " OFFSET " . $countPerPage * ($page - 1);
         $result = mysql_query($query);
         if (!$result) {
             exit(mysql_error());
@@ -31,8 +31,7 @@ Class NewsMapper extends Mapper {
             $nextNews->setId($row['id'])
                     ->setDate($row['date'])
                     ->setText($row['text'])
-                    ->setTitle($row['title'])
-                    ->setImage($row['img_id']);
+                    ->setTitle($row['title']);
             $news[] = $nextNews;
         }
         return $news;
@@ -123,7 +122,7 @@ Class NewsMapper extends Mapper {
      * @return NewsModel object
      */
     public function fetchById($id) {
-        $query = "SELECT id,title,text,date,img_id FROM news WHERE id =$id LIMIT 1";
+        $query = "SELECT id,title,text,date FROM news WHERE id =$id LIMIT 1";
         $result = mysql_query($query);
         if (!$result) {
             exit(mysql_error());
@@ -133,8 +132,7 @@ Class NewsMapper extends Mapper {
         $nextNews->setId($row['id'])
                 ->setDate($row['date'])
                 ->setText($row['text'])
-                ->setTitle($row['title'])
-                ->setImage($row['img_id']);
+                ->setTitle($row['title']);
         return $nextNews;
     }
 
@@ -155,8 +153,7 @@ Class NewsMapper extends Mapper {
             $nextNews->setId($row['id'])
                     ->setDate($row['date'])
                     ->setText($row['text'])
-                    ->setTitle($row['title'])
-                    ->setImage($row['img_id']);
+                    ->setTitle($row['title']);
             $news[] = $nextNews;
         }
         return $news;
