@@ -213,7 +213,7 @@ class Admin extends Controller {
     public function saveAjax() {
         $date = $_POST['date'];
         $type = $_POST['type'];
-        $text = $_POST['text'];
+        $text = $_POST['textArea'];
         $title = $_POST['title'];
         $id = $_POST['id'];
 

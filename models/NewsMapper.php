@@ -76,9 +76,9 @@ Class NewsMapper extends Mapper {
      * @return $id 
      */
     public function insert($title, $text, $date) {
-        $title = strip_tags($title);
-        $text = strip_tags($text);
-        $date = strip_tags($date);
+//        $title = strip_tags($title);
+//        $text = strip_tags($text);
+//        $date = strip_tags($date);
         $query = "INSERT INTO news (title,text,date) VALUES ('$title','$text','$date')";
         $result = mysql_query($query);
         if (!$result) {
@@ -95,9 +95,9 @@ Class NewsMapper extends Mapper {
      * @return void
      */
     public function update($title, $text, $id, $date) {
-        $title = strip_tags($title);
-        $text = strip_tags($text);
-        $date = strip_tags($date);
+//        $title = strip_tags($title);
+//        $text = strip_tags($text);
+//        $date = strip_tags($date);
         $query = "UPDATE news SET title ='$title' ,text = '$text', date='$date' WHERE id = $id";
         $result = mysql_query($query);
         if (!$result) {

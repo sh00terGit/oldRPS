@@ -30,6 +30,12 @@ class Stat extends Controller {
     }
     
     
+    public function htmlarea() {
+        $this->view->render('stat/htmlarea',false);
+    }
+
+
+    
     /**
      *  path delete all statistics browser info 
      */

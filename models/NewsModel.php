@@ -49,6 +49,7 @@ Class NewsModel {
     }
 
     public function setShortText($text) {
+        $text = strip_tags($text);
         $this->shortText = $this->my_substr($text);
 //        $this->shortText = mb_substr($text, 0, 200, 'UTF-8');
         return $this;

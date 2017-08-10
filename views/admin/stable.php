@@ -60,7 +60,8 @@
 
                 <div class="form-group">
                     <label for="title" class="text-primary h5">Текст</label>
-                    <textarea  name="text" id="text" cols="75" rows="10" class="form-control"></textarea>
+                    <textarea  name="textArea" id='textArea' style="width:100%;height: 200px;"></textarea>
+                    <textarea  name="text" id='text' style="display:none;"></textarea>
                 </div>
 
                 <div class="form-group">
@@ -158,5 +159,31 @@
 
 </style>
 
+<script src="/public/js/test3/jHtmlArea-0.8.js"></script>
+
+
+<link rel="stylesheet" href="/public/js/test3/jHtmlArea.css">
+<script type="text/javascript">    
+        $(function() {
+
+//            $("#text").htmlarea(); // Initialize jHtmlArea's with all default values
+            
+
+        });
+    </script>
+    
+        <style type="text/css">
+        /* body { background: #ccc;} */
+        div.jHtmlArea .ToolBar ul li a.custom_disk_button 
+        {
+            background: url(images/disk.png) no-repeat;
+            background-position: 0 0;
+        }
+        
+        div.jHtmlArea { 
+            
+            width:100%;
+            border: solid 1px #ccc; }
+    </style>
 
 

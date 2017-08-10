@@ -55,6 +55,7 @@ function viewAddForm() {
     document.getElementById("type").value = 'add';
     document.getElementById("list").innerHTML = '';
     document.getElementById("upload-list").innerHTML = '';
+    $('#textArea').val($('#text').val()).htmlarea('updateHtmlArea');
 }
 
 
@@ -93,6 +94,7 @@ function selectAjax(id) {
             document.getElementById("date").value = response.date;
             document.getElementById("type").value = 'update';
             document.getElementById("submitButton").disabled = false;
+            $('#textArea').val($('#text').val()).htmlarea('updateHtmlArea');
             var image = response.image;
             for (var i = 0; i < image.length; i++) {
                 var div = document.createElement('div');

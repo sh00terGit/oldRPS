@@ -9,7 +9,7 @@
 </div>
 </div>
     <div class="news_content_text lead">
-        <p><?= nl2br($this->news->getText())?></p>
+        <p><?=$this->news->getText()?></p>
     </div>  
 
 <?php if ($this->news->getImageActive() ) :?>
