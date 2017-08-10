@@ -80,7 +80,7 @@
                     </p>
                 </div>
                 <div class="col-md-5">
-                    <img class="featurette-image img-responsive"src="/public/images/news/children.jpg">
+                    <img class="featurette-image img-responsive" src="/public/images/news/children.jpg">
                 </div>
             </div>
 

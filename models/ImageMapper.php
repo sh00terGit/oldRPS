@@ -7,8 +7,20 @@
  */
 
 Class ImageMapper extends Mapper {
+    
+    public $table,$type, $uploadDir;
 
-    public function __construct() {
+    public function __construct($type='news') {
+        if($type == 'news') {
+            $this->type = 'news';
+            $this->table = 'news_img';
+            $this->uploadDir = "/public/images/news/data/";
+        }
+        if($type == 'menu') {
+            $this->type = 'menu';
+            $this->table = 'articles_img';
+            $this->uploadDir = "/public/images/static/data/";
+        }
         parent::__construct();
     }
 
@@ -21,7 +33,7 @@ Class ImageMapper extends Mapper {
     public function insert($newsId, $path) {
         $newsId = strip_tags($newsId);
         $path = strip_tags($path);
-        $query = "INSERT INTO news_img (news_id, path) VALUES ('$newsId','$path')";
+        $query = "INSERT INTO ".$this->table ." (news_id, path) VALUES ('$newsId','$path')";
         $result = mysql_query($query);
         if (!$result) {
             exit(mysql_error());
@@ -35,7 +47,7 @@ Class ImageMapper extends Mapper {
 
     public function delete($id) {
         $id = strip_tags($id);
-        $query = "DELETE FROM news_img WHERE id= $id";
+        $query = "DELETE FROM ".$this->table ." WHERE id= $id";
         $result = mysql_query($query);
         if (!$result) {
             exit(mysql_error());
@@ -48,7 +60,7 @@ Class ImageMapper extends Mapper {
      * @return NewsModel object
      */
     public function fetchByNewsId($id) {
-        $query = "SELECT id,news_id,path FROM news_img WHERE news_id =$id  ORDER BY id ASC ";
+        $query = "SELECT id,news_id,path FROM ".$this->table ." WHERE news_id =$id  ORDER BY id ASC ";
         $result = mysql_query($query);
         if (!$result) {
             exit(mysql_error());
@@ -59,7 +71,7 @@ Class ImageMapper extends Mapper {
             $image = new ImageModel();
             $image->setId($row['id'])
                     ->setNewsId($row['news_id'])
-                    ->setPath($row['path']);
+                    ->setPath($row['path'], $this->uploadDir);
             $images[] = $image;
         }
         return $images;
@@ -67,7 +79,7 @@ Class ImageMapper extends Mapper {
     
     
     public function fetchById($id){
-        $query = "SELECT id,news_id,path FROM news_img WHERE id =$id  LIMIT 1 ";
+        $query = "SELECT id,news_id,path FROM ".$this->table ." WHERE id =$id  LIMIT 1 ";
         $result = mysql_query($query);
         if (!$result) {
             exit(mysql_error());
@@ -76,7 +88,7 @@ Class ImageMapper extends Mapper {
         $image = new ImageModel();
         $image->setId($row['id'])
                 ->setNewsId($row['news_id'])
-                ->setPath($row['path']);
+                ->setPath($row['path'],$this->uploadDir);
         return $image;
     }
 

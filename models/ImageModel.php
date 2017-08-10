@@ -31,10 +31,10 @@ Class ImageModel {
         return $this;
     }
 
-    public function setPath($name) {
+    public function setPath($name,$dir = "/public/images/news/data/") {
         if($name != NULL) {
             $this->setFname($name);
-            $this->path = "/public/images/news/data/" . $this->getFname();
+            $this->path = $dir . $this->getFname();
         }
         return $this;
     }
