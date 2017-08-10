@@ -15,7 +15,8 @@
 
 
 <div class="clearfix"></div>
-<div class="container">
+
+<div class="container" id="admin_content">
     <div class="row">        
         <a type="button"  class="btn btn-success"   onclick="viewAddForm()" ><span class="glyphicon glyphicon-plus " style="color:green;"></span> Добавить</a>
         <p></p> 
@@ -59,7 +60,8 @@
 
                 <div class="form-group">
                     <label for="title" class="text-primary h5">Текст</label>
-                    <textarea  name="text" id="text" cols="75" rows="10" class="form-control"></textarea>
+                    <textarea  name="textArea" id='textArea' style="width:100%;height: 200px;"></textarea>
+                    <textarea  name="text" id='text' style="display:none;"></textarea>
                 </div>
 
                 <div class="form-group">
@@ -93,14 +95,18 @@
     Удалено
 </div>
 <script src="/public/js/stable.js"></script>
-<script src="/public/js/jquery-ui.datepicker.js"></script>
 <script src="/public/js/datepicker.options.js"></script>
 <script src="/public/js/jquery.blockUI.min.js"></script>
 <script src="/public/js/jquery.jgrowl.min.js"></script>
 <link href="/public/css/jquery-ui.css" rel="stylesheet">
 
-
 <style>
+    
+   .form-group input,.form-group textarea {
+       background-color: #f9f9f9;
+    }
+    
+    
     .input-file {
         display: block;
         cursor: pointer;
@@ -152,4 +158,32 @@
     }
 
 </style>
+
+<script src="/public/js/test3/jHtmlArea-0.8.js"></script>
+
+
+<link rel="stylesheet" href="/public/js/test3/jHtmlArea.css">
+<script type="text/javascript">    
+        $(function() {
+
+//            $("#text").htmlarea(); // Initialize jHtmlArea's with all default values
+            
+
+        });
+    </script>
+    
+        <style type="text/css">
+        /* body { background: #ccc;} */
+        div.jHtmlArea .ToolBar ul li a.custom_disk_button 
+        {
+            background: url(images/disk.png) no-repeat;
+            background-position: 0 0;
+        }
+        
+        div.jHtmlArea { 
+            
+            width:100%;
+            border: solid 1px #ccc; }
+    </style>
+
 

@@ -60,7 +60,8 @@
 
                 <div class="form-group">
                     <label for="title" class="text-primary h5">Текст</label>
-                    <textarea  name="text" id="text" cols="75" rows="10" class="form-control"></textarea>
+                    <textarea  name="textArea" id='textArea' style="width:100%;height: 200px;"></textarea>
+                    <textarea  name="text" id='text' style="display:none;"></textarea>
                 </div>
 
                 <div class="form-group">
@@ -72,17 +73,17 @@
                     <div id='list'></div>
                 </div>
                 <input class="input-file btn btn-primary btn-file" type="file" id="file" name="file[]" data-title="документ"  accept="image">
-        <!--Список файлов загруженных пользователем-->
-        <ul class="js_file_list file-list" id='upload-list' >
-        </ul>
-        <!--<div class="clearfix"></div>-->
+                <!--Список файлов загруженных пользователем-->
+                <ul class="js_file_list file-list" id='upload-list' >
+                </ul>
+                <!--<div class="clearfix"></div>-->
 
-        <!-- кнопка для отправки формы-->
-        <button type="submit" class="btn btn-primary form-control" id="submitButton" disabled="true">Cохранить</button> 
+                <!-- кнопка для отправки формы-->
+                <button type="submit" class="btn btn-primary form-control" id="submitButton" disabled="true">Cохранить</button> 
 
             </form> 
-<!--
-            <img src="/public/images/loader.gif" style="width: 100%; display: none;" id="img" />-->
+            <!--
+                        <img src="/public/images/loader.gif" style="width: 100%; display: none;" id="img" />-->
 
         </div>
 
@@ -92,82 +93,110 @@
     <!--/left half page-->
 </div>
 
-
-<div class="growlUI" style="display:none;">
-   Удалено
-</div>
 <script src="/public/js/ie.js"></script>
-<script src="/public/js/jquery-ui.datepicker.js"></script>
 <script src="/public/js/datepicker.options.js"></script>
 <link href="/public/css/jquery-ui.css" rel="stylesheet">
 
 
 <style>
-.input-file {
-    display: block;
-    cursor: pointer;
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-.file-list {    
-    width: 100%;
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 10px;
-}
-
-.file-list li {
-    float:left;
-    position: relative;
-    display: block;
-    text-align: left;
-    padding: 6px 0 8px;
-    margin: 5px;
+    .form-group input,.form-group textarea {
+        background-color: #f9f9f9;
+    }
     
-}
+    .input-file {
+        display: block;
+        cursor: pointer;
+        width: 100%;
+        margin-bottom: 10px;
+    }
 
-.file-list li:last-child {
-    margin-bottom: 20px;
-}
+    .file-list {    
+        width: 100%;
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 10px;
+    }
 
-.file_remove {
-    background: url("/public/images/icon/close.png") no-repeat center;
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: 1;
-}
+    .file-list li {
+        float:left;
+        position: relative;
+        display: block;
+        text-align: left;
+        padding: 6px 0 8px;
+        margin: 5px;
 
-.progress-bar {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    z-index: 0;
-    background-color: green;
-    height: 2px;
-    transition: 0.3s ease;
-    -ms-transition: 0.3s ease;
-}
+    }
+
+    .file-list li:last-child {
+        margin-bottom: 20px;
+    }
+
+    .file_remove {
+        background: url("/public/images/icon/close.png") no-repeat center;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 1;
+    }
+
+    .progress-bar {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: 0;
+        background-color: green;
+        height: 2px;
+        transition: 0.3s ease;
+        -ms-transition: 0.3s ease;
+    }
 
 </style>
 
 <script>
 
-       $(document).on('change', '#year', function () {
-           $.ajax({
-               url: '/admin/yearchange ',
-               data: 'year=' + $('#year').val(),
-               complete: function (data) {
-                   $('#newsCol').html(data.responseText);
-               }
-           });
-       });
+                                $(document).on('change', '#year', function () {
+                                    $.ajax({
+                                        url: '/admin/yearchange ',
+                                        data: 'year=' + $('#year').val(),
+                                        complete: function (data) {
+                                            $('#newsCol').html(data.responseText);
+                                        }
+                                    });
+                                });
 </script>
 
 
+
+
+
+<script src="/public/js/test3/jHtmlArea-0.8.js"></script>
+
+
+<link rel="stylesheet" href="/public/js/test3/jHtmlArea.css">
+<script type="text/javascript">    
+        $(function() {
+
+//            $("#text").htmlarea(); // Initialize jHtmlArea's with all default values
+            
+
+        });
+    </script>
+    
+        <style type="text/css">
+        /* body { background: #ccc;} */
+        div.jHtmlArea .ToolBar ul li a.custom_disk_button 
+        {
+            background: url(images/disk.png) no-repeat;
+            background-position: 0 0;
+        }
+        
+        div.jHtmlArea { 
+            
+            width:100%;
+            border: solid 1px #ccc; }
+    </style>
 
 

@@ -12,10 +12,9 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/W:/domains/rps.local/controllers/News.php</file>
-            <file>file:/W:/domains/rps.local/library/View.php</file>
+            <file>file:/W:/domains/rps.local/views/index/index_1.php</file>
             <file>file:/W:/domains/rps.local/controllers/Admin.php</file>
-            <file>file:/W:/domains/rps.local/views/header.php</file>
+            <file>file:/W:/domains/rps.local/models/PageMapper.php</file>
             <file>file:/W:/domains/rps.local/controllers/Index.php</file>
         </group>
     </open-files>

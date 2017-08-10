@@ -7,7 +7,7 @@
  * 
  */
 
-Class NewsMapper extends Mapper {
+Class ArticleMapper extends Mapper {
 
     public function __construct() {
         parent::__construct();
@@ -19,7 +19,7 @@ Class NewsMapper extends Mapper {
      * @return array news objects
      */
     public function fetchByPageYear($page,$year ,$countPerPage =  LIMIT_VALUE ) {
-        $query = "SELECT id,title,text,date FROM news WHERE year(date) =  '$year'  ORDER BY date DESC LIMIT " . $countPerPage . " OFFSET " . $countPerPage * ($page - 1);
+        $query = "SELECT id,title,text,date FROM articles WHERE year(date) =  '$year'  ORDER BY date DESC LIMIT " . $countPerPage . " OFFSET " . $countPerPage * ($page - 1);
         $result = mysql_query($query);
         if (!$result) {
             exit(mysql_error());
@@ -27,11 +27,12 @@ Class NewsMapper extends Mapper {
         $news = array();
         for ($i = 0; $i < mysql_num_rows($result); $i++) {
             $row = mysql_fetch_array($result, MYSQL_ASSOC);
-            $nextNews = new NewsModel();
+            $nextNews = new ArticleModel();
             $nextNews->setId($row['id'])
                     ->setDate($row['date'])
                     ->setText($row['text'])
                     ->setTitle($row['title']);
+                    
             $news[] = $nextNews;
         }
         return $news;
@@ -42,7 +43,7 @@ Class NewsMapper extends Mapper {
      * @return int count
      */
     public function getCountNews($year) {
-        $query = "SELECT count(*) as countRows FROM news WHERE year(date) =  '$year'";
+        $query = "SELECT count(*) as countRows FROM articles WHERE year(date) =  '$year'";
         $result = mysql_query($query);
         if (!$result) {
             exit(mysql_error());
@@ -78,7 +79,7 @@ Class NewsMapper extends Mapper {
 //        $title = strip_tags($title);
 //        $text = strip_tags($text);
 //        $date = strip_tags($date);
-        $query = "INSERT INTO news (title,text,date) VALUES ('$title','$text','$date')";
+        $query = "INSERT INTO articles (title,text,date) VALUES ('$title','$text','$date')";
         $result = mysql_query($query);
         if (!$result) {
             exit(mysql_error());
@@ -97,7 +98,7 @@ Class NewsMapper extends Mapper {
 //        $title = strip_tags($title);
 //        $text = strip_tags($text);
 //        $date = strip_tags($date);
-        $query = "UPDATE news SET title ='$title' ,text = '$text', date='$date' WHERE id = $id";
+        $query = "UPDATE articles SET title ='$title' ,text = '$text', date='$date' WHERE id = $id";
         $result = mysql_query($query);
         if (!$result) {
             exit(mysql_error());
@@ -109,7 +110,7 @@ Class NewsMapper extends Mapper {
      * @param int $id
      */
     public function delete($id) {
-        $query = "DELETE FROM news WHERE id = $id";
+        $query = "DELETE FROM articles WHERE id = $id";
         $result = mysql_query($query);
         if (!$result) {
             exit(mysql_error());
@@ -119,20 +120,39 @@ Class NewsMapper extends Mapper {
     /**
      * Fetched one object of news by id     * 
      * @param int $id
-     * @return NewsModel object
+     * @return ArticleModel object
      */
     public function fetchById($id) {
-        $query = "SELECT id,title,text,date FROM news WHERE id =$id LIMIT 1";
+        $query = "SELECT id,title,text,date FROM articles WHERE id =$id LIMIT 1";
         $result = mysql_query($query);
         if (!$result) {
             exit(mysql_error());
         }
         $row = mysql_fetch_row($result, MYSQL_ASSOC);
-        $nextNews = new NewsModel();
+        $nextNews = new ArticleModel();
         $nextNews->setId($row['id'])
                 ->setDate($row['date'])
                 ->setText($row['text'])
                 ->setTitle($row['title']);
+               
+        return $nextNews;
+    }
+    
+    
+    
+        public function fetchByTitle($title) {
+        $query = "SELECT id,title,text,date FROM articles WHERE title ='".$title."' LIMIT 1";
+        $result = mysql_query($query);
+        if (!$result) {
+            exit(mysql_error());
+        }
+        $row = mysql_fetch_row($result, MYSQL_ASSOC);
+        $nextNews = new ArticleModel();
+        $nextNews->setId($row['id'])
+                ->setDate($row['date'])
+                ->setText($row['text'])
+                ->setTitle($row['title']);
+               
         return $nextNews;
     }
 
@@ -141,7 +161,7 @@ Class NewsMapper extends Mapper {
      * @return array $news objects
      */
     public function fetchAll() {
-        $query = "SELECT id,title,text,date FROM news ORDER by date DESC ";
+        $query = "SELECT id,title,text,date FROM articles ORDER by date DESC ";
         $result = mysql_query($query);
         if (!$result) {
             exit(mysql_error());
@@ -149,7 +169,7 @@ Class NewsMapper extends Mapper {
         $news = array();
         for ($i = 0; $i < mysql_num_rows($result); $i++) {
             $row = mysql_fetch_array($result, MYSQL_ASSOC);
-            $nextNews = new NewsModel();
+            $nextNews = new ArticleModel();
             $nextNews->setId($row['id'])
                     ->setDate($row['date'])
                     ->setText($row['text'])
@@ -159,7 +179,7 @@ Class NewsMapper extends Mapper {
         return $news;
     }
 
-    public function to_json(NewsModel $news) {
+    public function to_json(ArticleModel $news) {
         return json_encode(array(
             "id" => $news->getId(),
             "title" => $news->getTitle(),

@@ -7,7 +7,7 @@
  * 
  */
 
-Class NewsModel {
+Class ArticleModel {
 
     public $id;
     public $title;
@@ -49,7 +49,6 @@ Class NewsModel {
     }
 
     public function setShortText($text) {
-        $text = strip_tags($text);
         $this->shortText = $this->my_substr($text);
 //        $this->shortText = mb_substr($text, 0, 200, 'UTF-8');
         return $this;
@@ -66,7 +65,7 @@ Class NewsModel {
 
     //выдаем список файлов, если нету выводим картинку "нет картинки"
     function getImage() {
-        $mapper = new ImageMapper();
+        $mapper = new ImageMapper($type='menu');
         $images = $mapper->fetchByNewsId($this->getId());
         if ($images == NULL) {
             $image = new ImageModel();
@@ -78,7 +77,7 @@ Class NewsModel {
 
     //выдаём список файлов
     function getImageActive() {
-        $mapper = new ImageMapper();
+        $mapper = new ImageMapper($type='menu');
         $images = $mapper->fetchByNewsId($this->getId());
 
         return $images;

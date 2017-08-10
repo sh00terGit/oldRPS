@@ -18,7 +18,7 @@ class Stat extends Controller {
     }
 
     /**
-     * Render error page
+     * Render statistic browser for all time
      */
     public function index() {        
         $mapper = new BrowserMapper();
@@ -26,9 +26,19 @@ class Stat extends Controller {
         $platformPercent = $mapper->fetchPercentPlatforms();
         $this->view->browsers = $browserPercent;
         $this->view->platforms = $platformPercent;
-        $this->view->render('stat/index');
+        $this->view->render('stat/index',false);
     }
     
+    
+    public function htmlarea() {
+        $this->view->render('stat/htmlarea',false);
+    }
+
+
+    
+    /**
+     *  path delete all statistics browser info 
+     */
     public function delete() {
         $mapper = new BrowserMapper();
         $mapper->delete();

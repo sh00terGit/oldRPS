@@ -55,6 +55,7 @@ function viewAddForm() {
     document.getElementById("type").value = 'add';
     document.getElementById("list").innerHTML = '';
     document.getElementById("upload-list").innerHTML = '';
+    $('#textArea').val($('#text').val()).htmlarea('updateHtmlArea');
 }
 
 
@@ -93,20 +94,21 @@ function selectAjax(id) {
             document.getElementById("date").value = response.date;
             document.getElementById("type").value = 'update';
             document.getElementById("submitButton").disabled = false;
+            $('#textArea').val($('#text').val()).htmlarea('updateHtmlArea');
             var image = response.image;
             for (var i = 0; i < image.length; i++) {
                 var div = document.createElement('div');
                 $(div).addClass('col-sm-6');
 
-                div.innerHTML = ['<li class="file-list" id="' + image[i].id + '"><div class="js_file_remove file_remove" onClick="removeImage(' + image[i].id + ')"></div></li>'].join(''); //добавляем все новые файлы в список на клиенте
+                div.innerHTML = ['<li class="file-list" id=img_'+ image[i].id + '><div class="js_file_remove file_remove" onClick="removeImage(' + image[i].id + ')"></div></li>'].join(''); //добавляем все новые файлы в список на клиенте
                 document.getElementById('list').insertBefore(div, null);
-
+                
                 var div1 = document.createElement('div');
 
                 div1.innerHTML = ['<img class="thumb" style="width:200px;height:160px;"src="', image[i].path,
                     '" />  '].join('');
 
-                document.getElementById(image[i].id).appendChild(div1);
+                document.getElementById('img_' + image[i].id).appendChild(div1);
             }
             
             
@@ -120,6 +122,57 @@ function selectAjax(id) {
 
 
 }
+
+
+// getting news data via AJAX
+function selectMenuAjax(id) {
+    document.getElementById('form').hidden = false;
+    document.getElementById('form').style.display = 'block';
+    document.getElementById("form").reset();
+    document.getElementById("list").innerHTML = '';
+    document.getElementById("upload-list").innerHTML = '';
+    var id = id;
+   
+    $.ajax({
+        url: '/admin/selectMenuAjax',
+        dataType: 'json',
+        cache: false,
+        data: 'id='+ id,
+        complete: function(data) {
+            var response = jQuery.parseJSON(data.responseText);
+            document.getElementById("title").value = response.title;
+            document.getElementById("text").value = response.text;
+            document.getElementById("id").value = response.id;
+            document.getElementById("date").value = response.date;
+            document.getElementById("type").value = 'update';
+            document.getElementById("submitButton").disabled = false;
+            var image = response.image;
+            for (var i = 0; i < image.length; i++) {
+                var div = document.createElement('div');
+                $(div).addClass('col-sm-6');
+
+                div.innerHTML = ['<li class="file-list" id="img_' + image[i].id + '"><div class="js_file_remove file_remove" onClick="removeMenuImage(' + image[i].id + ')"></div></li>'].join(''); //добавляем все новые файлы в список на клиенте
+                document.getElementById('list').insertBefore(div, null);
+
+                var div1 = document.createElement('div');
+                div1.innerHTML = ['<img class="thumb" style="width:200px;height:160px;"src="', image[i].path,
+                    '" />  '].join('');
+
+                document.getElementById('img_' + image[i].id).appendChild(div1);
+            }
+            
+            
+        },
+         error: function (error) {
+                  alert('error; ' + eval(error));
+              }
+              
+              
+    });
+
+
+}
+
 
 
 function removeImage(id) {
@@ -140,3 +193,18 @@ function removeImage(id) {
     
     
 
+function removeMenuImage(id) {
+    $.ajax({
+        url: '/admin/deleteMenuImageAjax',
+        cache: false,
+        data: 'id='+ id
+    });
+}
+
+
+
+    $(document).on('click', '.js_file_remove', function () {
+        var list_item = $(this).closest('li');
+        $(list_item).remove();
+        console.log('remove');
+    });

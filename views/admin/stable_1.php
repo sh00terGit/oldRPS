@@ -15,7 +15,8 @@
 
 
 <div class="clearfix"></div>
-<div class="container">
+
+<div class="container" id="admin_content">
     <div class="row">        
         <a type="button"  class="btn btn-success"   onclick="viewAddForm()" ><span class="glyphicon glyphicon-plus " style="color:green;"></span> Добавить</a>
         <p></p> 
@@ -93,14 +94,18 @@
     Удалено
 </div>
 <script src="/public/js/stable.js"></script>
-<script src="/public/js/jquery-ui.datepicker.js"></script>
 <script src="/public/js/datepicker.options.js"></script>
 <script src="/public/js/jquery.blockUI.min.js"></script>
 <script src="/public/js/jquery.jgrowl.min.js"></script>
 <link href="/public/css/jquery-ui.css" rel="stylesheet">
 
-
 <style>
+    
+   .form-group input,.form-group textarea {
+       background-color: #f9f9f9;
+    }
+    
+    
     .input-file {
         display: block;
         cursor: pointer;
@@ -154,22 +159,4 @@
 </style>
 
 
-
-<script src='/public/js/jquery.blockUI.min.js'></script>
-<script>
-
-       $(document).on('change', '#year', function () {
-           $.ajax({
-               url: '/admin/yearchange ',
-               data: 'year=' + $('#year').val(),
-               beforeSend: function () {
-                   $.blockUI({message: '<h1> Подождите</h1>', timeout: 400});
-               },
-               complete: function (data) {
-                   $.unblockUI();
-                   $('#newsCol').html(data.responseText);
-               }
-           });
-       });
-</script>
 

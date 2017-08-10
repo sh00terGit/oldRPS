@@ -22,15 +22,15 @@ class Index extends Controller {
         $this->view->render('index/index');
     }
     
-   /**    public function index() {
-        $this->view->render('index/index');
-    }
+   /**
     * Деятельность -->Направления
     */ 
    public function dirwork() {
        $this->view->description = 'Направления деятельности РАЙПРОФСОЖ';
        $this->view->title = $this->view->description;
-        $this->view->render('index/dirwork');
+        $mapper = new ArticleMapper();
+       $this->view->article = $mapper->fetchByTitle('Направления деятельности');
+        $this->view->render('index/article');
     }
    
   /**
@@ -40,7 +40,9 @@ class Index extends Controller {
    public function taskwork() {
         $this->view->description = 'Задачи перед РАЙПРОФСОЖ';
        $this->view->title = $this->view->description;
-        $this->view->render('index/taskwork');
+        $mapper = new ArticleMapper();
+       $this->view->article = $mapper->fetchByTitle('Основные задачи');
+        $this->view->render('index/article');
     } 
     
     
@@ -51,7 +53,9 @@ class Index extends Controller {
    public function healthwork() {
         $this->view->description = 'Оздоровление с  РАЙПРОФСОЖ';
        $this->view->title = $this->view->description;
-        $this->view->render('index/healthwork');
+       $mapper = new ArticleMapper();
+       $this->view->article = $mapper->fetchByTitle('Оздоровление');
+        $this->view->render('index/article');
     } 
 
     
@@ -63,7 +67,9 @@ class Index extends Controller {
    public function infoday() {
         $this->view->description = 'Информационный день РАЙПРОФСОЖ';
        $this->view->title = $this->view->description;
-        $this->view->render('index/infoday');
+        $mapper = new ArticleMapper();
+       $this->view->article = $mapper->fetchByTitle('Информационный день');
+        $this->view->render('index/article');
     } 
 
       /**
@@ -73,14 +79,18 @@ class Index extends Controller {
    public function photosport() {
         $this->view->description = 'Спортакиады с  РАЙПРОФСОЖ';
        $this->view->title = $this->view->description;
-        $this->view->render('index/photosport');
+        $mapper = new ArticleMapper();
+       $this->view->article = $mapper->fetchByTitle('Спортакиады');
+        $this->view->render('index/article');
     } 
 
 
     public function contacts(){
          $this->view->description = 'Контакты РАЙПРОФСОЖ';
        $this->view->title = $this->view->description;
-        $this->view->render('index/contacts');
+       $mapper = new ArticleMapper();
+       $this->view->article = $mapper->fetchByTitle('Контакты');
+        $this->view->render('index/article');
     }
     
     
