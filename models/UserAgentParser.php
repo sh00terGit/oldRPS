@@ -121,11 +121,11 @@ Class UserAgentParser {
         } elseif ($find('Trident', $key)) {
             $browser = 'MSIE';
             $version = $rv_result;
-            $str_find = [   "/Trident\\/4.0/" => '8.0',
+            $str_find = array(   "/Trident\\/4.0/" => '8.0',
                             "/Trident\\/5.0/" => '9.0',
                             "/Trident\\/6.0/" => '10.0',
                             "/Trident\\/7.0/" => '11.0',
-            ];
+            );
             foreach ($str_find as $trident => $ieVer) {
                 if (preg_match($trident, $u_agent)) {
                     $version = $ieVer;

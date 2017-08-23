@@ -146,13 +146,15 @@ Class ArticleMapper extends Mapper {
         if (!$result) {
             exit(mysql_error());
         }
-        $row = mysql_fetch_row($result, MYSQL_ASSOC);
+        $row = mysql_fetch_assoc($result);
         $nextNews = new ArticleModel();
         $nextNews->setId($row['id'])
-                ->setDate($row['date'])
+                ->setTitle($row['title'])
                 ->setText($row['text'])
-                ->setTitle($row['title']);
-               
+                ->setDate($row['date']);
+        
+                
+                     
         return $nextNews;
     }
 

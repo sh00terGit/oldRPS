@@ -11,6 +11,9 @@
 
 <script src="/public/js/jquery-ui.datepicker.js"></script>
 
+<!--загружаем html редактор -->
+<script src="/public/js/jhtmlArea/jHtmlArea-0.8.js"></script>
+<link rel="stylesheet" href="/public/js/jhtmlArea/jHtmlArea.css">
 
 
 <script>

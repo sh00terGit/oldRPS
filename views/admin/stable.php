@@ -159,31 +159,6 @@
 
 </style>
 
-<script src="/public/js/test3/jHtmlArea-0.8.js"></script>
 
-
-<link rel="stylesheet" href="/public/js/test3/jHtmlArea.css">
-<script type="text/javascript">    
-        $(function() {
-
-//            $("#text").htmlarea(); // Initialize jHtmlArea's with all default values
-            
-
-        });
-    </script>
-    
-        <style type="text/css">
-        /* body { background: #ccc;} */
-        div.jHtmlArea .ToolBar ul li a.custom_disk_button 
-        {
-            background: url(images/disk.png) no-repeat;
-            background-position: 0 0;
-        }
-        
-        div.jHtmlArea { 
-            
-            width:100%;
-            border: solid 1px #ccc; }
-    </style>
 
 

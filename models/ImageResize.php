@@ -1,15 +1,14 @@
 <?php
 
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-
 class ImageResize {
-    
-        /**
+
+    /**
      * easy image resize function
      * @param $file - file name to resize
      * @param $string - The image data as a string, default is null
@@ -22,15 +21,22 @@ class ImageResize {
      * @param $quality - enter 1-100 (100 is best quality) default is 100
      * @return boolean|resource
      */
-    public function smart_resize_image($file, $string = null, $width = 0, $height = 0, $proportional = false,
-                                        $output = 'file', $delete_original = true, $use_linux_commands = false,
-                                        $quality = 100, $grayscale = false) {
-
-        if ($height <= 0 && $width <= 0)
+    
+    public function smart_resize_image($file, $string = null, $width = 0, $height = 0, $proportional = false, $output = 'file', $delete_original = true, $use_linux_commands = false, $quality = 100, $grayscale = false) {
+         if ($height <= 0 && $width <= 0)
             return false;
         if ($file === null && $string === null)
             return false;
         # Setting defaults and meta
+
+        if (!function_exists('getimagesizefromstring')) {
+
+            function getimagesizefromstring($string_data) {
+                $uri = 'data://application/octet-stream;base64,' . base64_encode($string_data);
+                return getimagesize($uri);
+            }
+
+        }
         $info = $file !== null ? getimagesize($file) : getimagesizefromstring($string);
         $image = '';
         $final_width = 0;
@@ -132,5 +138,5 @@ class ImageResize {
         }
         return true;
     }
-    
+
 }
