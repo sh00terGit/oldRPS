@@ -127,7 +127,7 @@ Class NewsMapper extends Mapper {
         if (!$result) {
             exit(mysql_error());
         }
-        $row = mysql_fetch_row($result, MYSQL_ASSOC);
+        $row = mysql_fetch_assoc($result);
         $nextNews = new NewsModel();
         $nextNews->setId($row['id'])
                 ->setDate($row['date'])

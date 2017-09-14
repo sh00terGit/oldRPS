@@ -95,11 +95,11 @@ Class ArticleModel {
 
     function my_substr($text, $symbols = 200) {
         $symbols = (int) $symbols;
-
-        if (strlen($text) <= $symbols)
+        if (strlen($text) <= $symbols) {
             return $text;
+        }
 
-        $pos = mb_strpos($text,' ', 200,'UTF-8');
+        $pos = mb_strpos($text,' ', $symbols,'UTF-8');
         return mb_substr($text, 0, (int) $pos, 'UTF-8')."....";
     }
 

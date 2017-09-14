@@ -71,6 +71,15 @@ class Index extends Controller {
        $this->view->article = $mapper->fetchByTitle('Информационный день');
         $this->view->render('index/article');
     } 
+    
+    
+       public function struct() {
+        $this->view->description = 'Структура РАЙПРОФСОЖ';
+       $this->view->title = $this->view->description;
+        $mapper = new ArticleMapper();
+       $this->view->article = $mapper->fetchByTitle('Структура');
+        $this->view->render('index/article');
+    } 
 
       /**
     * Фотогалерея --> Спартакиада

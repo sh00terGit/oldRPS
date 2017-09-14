@@ -29,8 +29,8 @@
         </div>
         <!-- /right half page-->
 
-        <!--left half page-->
-        <div class="col-xs-12 col-md-12 col-lg-6" >
+     <!--left half page-->
+        <div class="col-sm-6" >
 
             <form id="form" hidden="true"  method="POST" action="/admin/saveMenuAjax" enctype="multipart/form-data"   >        
                 <input type="hidden" id="type" name="type" value="add">
@@ -43,7 +43,8 @@
 
                 <div class="form-group">
                     <label for="title" class="text-primary h5">Текст</label>
-                    <textarea  name="text" id="text" cols="75" rows="10" class="form-control"></textarea>
+                    <textarea  name="textArea" id='textArea' style="width:100%;height: 200px;"></textarea>
+                    <textarea  name="text" id='text' style="display:none;"></textarea>
                 </div>
 
                 <div class="form-group">
@@ -137,18 +138,7 @@
 
 </style>
 
-<script>
 
-                                $(document).on('change', '#year', function () {
-                                    $.ajax({
-                                        url: '/admin/yearchange ',
-                                        data: 'year=' + $('#year').val(),
-                                        complete: function (data) {
-                                            $('#newsCol').html(data.responseText);
-                                        }
-                                    });
-                                });
-</script>
 
 
 

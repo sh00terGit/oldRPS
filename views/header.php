@@ -122,7 +122,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">О нас <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Структура</a></li>
+                                <li><a href="/index/struct">Структура</a></li>
                                 <li><a href="#">Становление</a></li>                             
                             </ul>
                         </li>
