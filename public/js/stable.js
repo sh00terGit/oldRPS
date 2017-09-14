@@ -272,7 +272,6 @@ function submit_function(form) {
    
             }
         }
-      
         // file
         if ($(form).find('input[type=file]').hasClass('js_file_check')) { //проверяем есть ли input type file для пересылки
             var current_input = $(form).find('input[type=file]');
